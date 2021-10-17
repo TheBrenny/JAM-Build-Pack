@@ -49,7 +49,7 @@ indent "Done!"
 
 
 # Download Java Compiler
-tell "Downloading Eclipse Java compiler"
+tell "Getting Eclipse Java compiler"
 COMPILER_URL=$(cat ${ENV_DIR}/COMPILER_URL)
 COMPILER_DEST=$(cat ${ENV_DIR}/COMPILER_DEST)
 COMPILER_CACHE="${CACHE_DIR}/compiler.jar"
