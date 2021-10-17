@@ -24,7 +24,7 @@ indent() {
 tell "Generating google-credentials.json"
 CREDENTIALS=$(cat ${ENV_DIR}/GOOGLE_CREDENTIALS)
 CRED_DEST=$(cat ${ENV_DIR}/GOOGLE_APPLICATION_CREDENTIALS)
-echo "${CREDENTIALS}" > "/app/${CRED_DEST}"
+echo "${CREDENTIALS}" > "${BUILD_DIR}/${CRED_DEST}"
 # echo "echo ${CREDENTIALS@Q} > /app/${CRED_DEST@Q}" > $BUILD_DIR/.profile.d/google-credentials.sh
 # chmod +x $BUILD_DIR/.profile.d/google-credentials.sh
 
