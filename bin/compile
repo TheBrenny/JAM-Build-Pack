@@ -31,15 +31,20 @@ echo "${CREDENTIALS}" > "/app/${CRED_DEST}"
 
 
 # Download Java
-tell "Downloading JRE binaries"
+tell "Getting JRE binaries"
 JRE_URL=$(cat ${ENV_DIR}/JRE_URL)
 JRE_DEST=$(cat ${ENV_DIR}/JRE_DEST)
 JRE_CACHE="${CACHE_DIR}/jre.tar.gz"
 if [ ! -e "${JRE_CACHE}" ]; then
-    curl -L# "${JRE_URL}" -o "${JRE_CACHE}"
+    indent "Downloading..."
+    curl -Ls "${JRE_URL}" -o "${JRE_CACHE}"
+else 
+    indent "Found in cache!"
 fi
+indent "Extracting..."
 mkdir -p "${BUILD_DIR}/${JRE_DEST}"
 tar -xzf "${JRE_CACHE}" -C "${BUILD_DIR}/${JRE_DEST}" --strip-components=1
+indent "Done!"
 
 
 
@@ -49,7 +54,12 @@ COMPILER_URL=$(cat ${ENV_DIR}/COMPILER_URL)
 COMPILER_DEST=$(cat ${ENV_DIR}/COMPILER_DEST)
 COMPILER_CACHE="${CACHE_DIR}/compiler.jar"
 if [ ! -e "${COMPILER_CACHE}" ]; then
-    curl -L# "${COMPILER_URL}" -o "${COMPILER_CACHE}"
+    indent "Downloading..."
+    curl -Ls "${COMPILER_URL}" -o "${COMPILER_CACHE}"
+else
+    indent "Found in cache!"
 fi
+indent "Copying..."
 mkdir -p "${BUILD_DIR}/${COMPILER_DEST}"
 cp "${COMPILER_CACHE}" "${BUILD_DIR}/${COMPILER_DEST}"
+indent "Done!"
