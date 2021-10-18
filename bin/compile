@@ -13,7 +13,7 @@ tell() {
     echo "-----> $1"
 }
 indent() {
-    echo "$1" | sed 's/^/       /'
+    echo "       $1"
 }
 
 
@@ -44,6 +44,7 @@ fi
 indent "Extracting..."
 mkdir -p "${BUILD_DIR}/${JRE_DEST}"
 tar -xzf "${JRE_CACHE}" -C "${BUILD_DIR}/${JRE_DEST}" --strip-components=1
+chmod a+x "${BUILD_DIR}/${JRE_DEST}/bin/java"
 indent "Done!"
 
 
