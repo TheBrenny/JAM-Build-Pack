@@ -61,6 +61,6 @@ else
     indent "Found in cache!"
 fi
 indent "Copying..."
-mkdir -p "${BUILD_DIR}/${COMPILER_DEST}"
+mkdir -p $(dirname "${BUILD_DIR}/${COMPILER_DEST}")
 cp "${COMPILER_CACHE}" "${BUILD_DIR}/${COMPILER_DEST}"
 indent "Done!"
